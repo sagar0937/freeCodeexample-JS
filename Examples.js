@@ -178,3 +178,139 @@ function sum(n) {
 sum(1)(2)(3)(6);
 
 console.log(i);//12
+
+//to check end of string wothout using 'endsWith' function
+function endOfString(str, target) {
+  return (str.substr(-target.length) === target)
+}
+endOfString("bostian", 'n');
+
+//trucate string
+function trucate(str, len) {
+  var s = "";
+  if (str.length > len) {
+      s = str.substr(0, len) + '...';
+      return s;
+  }
+  else { return str; }
+}
+trucate("hello good morning ! guys", 10);
+
+//chunks array
+function chunks(ar, size) {
+  var empty = [];
+  while (ar.length > 0) {
+      empty.push(ar.splice(0, size));
+  }
+  return empty;
+}
+chunks([1, 2, 3, 4, 5], 2);
+
+//mutation
+function mutation(arr) {
+  var first = arr[0].toLowerCase();
+  var second = arr[1].toLowerCase();
+  for (var m of second) {
+      if (first.indexOf(m) === -1) {
+          return false;
+      }
+  }
+  return true;
+}
+mutation(['hello', 'hey']);//false
+
+//remove falsy values
+function fasly(arr) {
+  var empty = [];
+  for (var a of arr) {
+      if (a) {
+          empty.push(a);
+      }
+  }
+
+  return empty;
+}
+fasly([4, 'aa', "", false, 9, 0]);
+
+//seek n destroy
+function des(arr, ...a) {
+  var empty = [];
+  arr.filter(function (item) {
+      console.log(typeof item)
+      if ([...a].indexOf(item) === -1) {
+          empty.push(item);
+      }
+  }
+  )
+  return empty;
+}
+des([1, 2, 3, 3, 2, 1], 2, 3);
+
+//insert the given array n get its index
+
+function getIndex(arr, insertArr) {
+  var newArr = arr.sort(function (a, b) {
+      return a - b;
+  })
+  var newA = newArr.concat(insertArr);
+  newA = newA.sort(function (a, b) {
+      return a - b;
+  })
+  console.log(newA)
+}
+getIndex([30, 19, 2], 50)
+
+//cipher text
+function cipher13(str) {
+  var emptyStr = '';
+  for (var a of str) {
+      var asciVal = a.charCodeAt();
+      if (asciVal >= 65 && asciVal <= 77) {
+          emptyStr += String.fromCharCode(asciVal + 13);
+      }
+      if (asciVal >= 78 && asciVal <= 90) {
+          emptyStr += String.fromCharCode(asciVal - 13);
+      }
+  }
+  return emptyStr;
+}
+cipher13('AZX')
+"NMK"
+//sumAll in given range
+function sumAll(arr) {
+  var a = Math.min(arr[0], arr[1]);
+  var b = Math.max(arr[0], arr[1]);
+
+  var sum = 0;
+  console.log({ a, b });
+  for (i = a; i <= b; i++) {
+
+      sum = sum + i;
+
+  }
+  return sum;
+}
+sumAll([3, 1]);
+
+//diff of two array
+function diffArr(arr1, arr2) {
+  var combo = arr1.concat(arr2);
+  var empty = [];
+  combo.filter(function (item, index) {
+      if (arr2.indexOf(item) === -1 || arr1.indexOf(item) === -1) {
+          empty.push(item);
+      }
+  });
+  return empty;
+}
+diffArr([1, 2, 3, 4, 5], [1, 2, 3, 5, 6]);//[4,6]
+function flatArray(a) {
+  var output = [];
+  a.forEach(item => {
+      if (Array.isArray(item) {
+          flatArray(item)
+      } else {
+          output.push(item);
+      }
+  })
+}
