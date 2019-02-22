@@ -314,3 +314,38 @@ function flatArray(a) {
       }
   })
 }
+
+//check if array,null,object,fucntionsa
+if( Object.prototype.toString.call( arrayList ) === '[object Array]' ) {
+    console.log('Array!');
+}
+
+//deep copy
+//Using JSON.parse(JSON.stringify(object));
+let obj = { 
+    a: 1,
+    b: { 
+      c: 2,
+    },
+  }
+  let newObj = JSON.parse(JSON.stringify(obj));
+  obj.b.c = 20;
+  console.log(obj); // { a: 1, b: { c: 20 } }
+  console.log(newObj); // { a: 1, b: { c: 2 } } (New Object Intact!)
+
+  //deep copy
+  function deepClone(object){
+	var newObject = {};
+	for(var key in object){
+		if(typeof object[key] === 'object'  && object[key] !== null ){
+		 newObject[key] = deepClone(object[key]);
+		}else{
+		 newObject[key] = object[key];
+		}
+	}
+	return newObject;
+}
+
+//interview questions
+//https://www.codementor.io/nihantanu/21-essential-javascript-tech-interview-practice-questions-answers-du107p62z
+//https://github.com/ganqqwerty/123-Essential-JavaScript-Interview-Questions
