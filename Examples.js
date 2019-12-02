@@ -314,6 +314,14 @@ function flatArray(a) {
       }
   })
 }
+//flattern array
+const flatten = arr => arr.reduce(
+    (a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []
+  );
+
+
+console.log( flatten([1, [2,3], [4,[5],[6,[7,8,9],10],11],[12],13]) );
+
 
 //check if array,null,object,fucntionsa
 if( Object.prototype.toString.call( arrayList ) === '[object Array]' ) {
